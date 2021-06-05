@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
         title: title,
-        theme: ThemeData(primarySwatch: Colors.indigo),
+        theme: ThemeData(primarySwatch: Colors.blue),
         home: TransactionPage(),
       );
 }
