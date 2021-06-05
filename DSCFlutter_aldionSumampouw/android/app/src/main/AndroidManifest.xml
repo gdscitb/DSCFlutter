@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.dscflutter_aldionsumampouw">
+    package="com.example.yukbisa">
    <application
-        android:label="dscflutter_aldionsumampouw"
+        android:label="yukbisa"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

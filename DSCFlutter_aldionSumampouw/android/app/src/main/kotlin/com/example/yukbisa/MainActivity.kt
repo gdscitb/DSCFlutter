@@ -1,4 +1,4 @@
-package com.example.dscflutter_aldionsumampouw
+package com.example.yukbisa
 
 import io.flutter.embedding.android.FlutterActivity
 
