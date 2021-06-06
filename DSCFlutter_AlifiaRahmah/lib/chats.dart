@@ -19,9 +19,9 @@ class ChatList extends StatelessWidget{
         Expanded(
           child: ListView(
             children: [
-              ChatHeader(from: "Alex", desc: "Long time no see, dude", time: "11:10"),
+              ChatHeader(from: "Alex", desc: "How's day?", time: "11:10"),
               ChatHeader(from: "John", desc: "How's day?", time: "10:10"),
-              ChatHeader(from: "Melinda", desc: "What are you doing this time?", time: "03:00"),
+              ChatHeader(from: "Melinda", desc: "How's day?", time: "03:00"),
             ]
           ),
         )
@@ -92,12 +92,11 @@ class _ChatScreen extends State<ChatScreen>{
   final String name, lastchat;
   _ChatScreen({this.name, this.lastchat});
   List<ChatMessage> messages = [
-    ChatMessage(messageContent: "Hi!", messageType: "receiver"),
-    ChatMessage(messageContent: "Hello!", messageType: "sender"),
+    ChatMessage(messageContent: "Hi!", messageType: "sender"),
+    ChatMessage(messageContent: "Hello!", messageType: "receiver"),
+    ChatMessage(messageContent: "How's day?", messageType: "receiver")
   ];
 
-  // text controller and use it to retrieve the current value
-  // of the TextField.
   final myController = TextEditingController();
 
   @override
@@ -145,66 +144,44 @@ class _ChatScreen extends State<ChatScreen>{
       ),
 
       body: Stack(
-        children: <Widget>[
+        children: [
 
           ListView.builder(
             scrollDirection: Axis.vertical,
-            itemCount: messages.length+1,
+            itemCount: messages.length,
             shrinkWrap: true,
             padding: EdgeInsets.only(top: 10,bottom: 10),
             physics: NeverScrollableScrollPhysics(),
             itemBuilder: (context, i){
-              if (i < messages.length) {
-                return Container(
-                  padding: EdgeInsets.only(
-                      left: 14, right: 14, top: 10, bottom: 10),
-                  child: Align(
-                    alignment: (messages[i].messageType == "receiver"
-                        ? Alignment.topLeft
-                        : Alignment.topRight),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        // bgcolors chat bubble
-                        color: (messages[i].messageType == "receiver" ? Colors
-                            .deepPurpleAccent : Colors.white),
-                      ),
-                      padding: EdgeInsets.all(8),
-                      // txtcolor chat bubble
-                      child: Text(
-                        messages[i].messageContent,
-                        style: TextStyle(fontSize: 15, color: (messages[i]
-                            .messageType == "receiver" ? Colors.white : Colors
-                            .black)),
-                      ),
+              return Container(
+                padding: EdgeInsets.only(
+                    left: 14, right: 14, top: 10, bottom: 10),
+                child: Align(
+                  alignment: (messages[i].messageType == "receiver"
+                      ? Alignment.topLeft
+                      : Alignment.topRight),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      // bgcolors chat bubble
+                      color: (messages[i].messageType == "receiver" ? Colors
+                          .deepPurpleAccent : Colors.white),
+                    ),
+                    padding: EdgeInsets.all(8),
+                    // txtcolor chat bubble
+                    child: Text(
+                      messages[i].messageContent,
+                      style: TextStyle(fontSize: 15, color: (messages[i]
+                          .messageType == "receiver" ? Colors.white : Colors
+                          .black)),
                     ),
                   ),
-                );
-              } else {
-                return Container(
-                  padding: EdgeInsets.only(
-                      left: 14, right: 14, top: 10, bottom: 10),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        // bgcolors chat bubble
-                        color: Colors.deepPurpleAccent,
-                      ),
-                      padding: EdgeInsets.all(8),
-                      // txtcolor chat bubble
-                      child: Text(
-                        "$lastchat",
-                        style: TextStyle(fontSize: 15, color: Colors.white),
-                      ),
-                    ),
-                  ),
-                );
-              }
+                ),
+              );
             }
           ),
 
+          // Write Message
           Align(
             alignment: Alignment.bottomLeft,
             child: Container(
@@ -220,7 +197,6 @@ class _ChatScreen extends State<ChatScreen>{
                       controller: myController,
                       decoration: InputDecoration(
                         hintText: "Write message...",
-                        //hintStyle: TextStyle(color: Colors.black54),
                         border: InputBorder.none
                       ),
                     ),
