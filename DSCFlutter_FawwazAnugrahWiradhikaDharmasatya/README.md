@@ -1,6 +1,6 @@
 # root_calculator
-
-A new Flutter application.
+Sebuah program untuk mencari akar dari sebuah persamaan kuadrat.
+-Menangani kasus untuk Determinan negatif.
 
 ## Getting Started
 
